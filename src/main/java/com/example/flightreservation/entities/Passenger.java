@@ -1,26 +1,27 @@
 package com.example.flightreservation.entities;
 
-public class Passanger {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-	private long id;
-	
+@Entity
+@Table(name = "passenger")
+public class Passenger extends AbstractEntity {
+
+	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
+
+	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
+	@Column(name = "MIDDLE_NAME")
 	private String middleName;
-	
+
+	@Column(name = "EMAIL")
 	private String email;
-	
+
+	@Column(name = "PHONE")
 	private String phone;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -61,7 +62,5 @@ public class Passanger {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	
-	
+
 }

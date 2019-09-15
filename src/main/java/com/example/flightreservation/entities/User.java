@@ -1,24 +1,22 @@
 package com.example.flightreservation.entities;
 
-public class User {
-	
-	private Long id;
-	
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+public class User extends AbstractEntity {
+
+	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
+
+	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
+	@Column(name = "EMAIL")
 	private String email;
-	
+
+	@Column(name = "PASSWORD")
 	private String password;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -51,6 +49,5 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 }

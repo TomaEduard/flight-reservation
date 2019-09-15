@@ -1,31 +1,30 @@
 package com.example.flightreservation.entities;
 
-public class Reservation {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
-	private long id;
-
-	private Boolean checkIn;
-
+@Entity
+public class Reservation extends AbstractEntity{
+	
+	@Column(name = "CHECKED_IN")
+	private Boolean checkedIn;
+	
+	@Column(name = "NUMBER_OF_BAGS")
 	private int numberOfBags;
-
-	private Passanger passanger;
-
+	
+	@OneToOne
+	private Passenger passenger;
+	
+	@OneToOne
 	private Flight flight;
 
-	public long getId() {
-		return id;
+	public Boolean getCheckedIn() {
+		return checkedIn;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Boolean getCheckIn() {
-		return checkIn;
-	}
-
-	public void setCheckIn(Boolean checkIn) {
-		this.checkIn = checkIn;
+	public void setCheckedIn(Boolean checkedIn) {
+		this.checkedIn = checkedIn;
 	}
 
 	public int getNumberOfBags() {
@@ -36,12 +35,12 @@ public class Reservation {
 		this.numberOfBags = numberOfBags;
 	}
 
-	public Passanger getPassanger() {
-		return passanger;
+	public Passenger getPassenger() {
+		return passenger;
 	}
 
-	public void setPassanger(Passanger passanger) {
-		this.passanger = passanger;
+	public void setPassenger(Passenger passenger) {
+		this.passenger = passenger;
 	}
 
 	public Flight getFlight() {
