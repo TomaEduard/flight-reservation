@@ -46,8 +46,8 @@ public class ReservationController {
 
 		Reservation reservation = reservationService.bookFlight(request);
 		modelMap.addAttribute("msg", "Reservation created successfully and the id is " + reservation.getId());
+		
 		return "reservationConfirmation";
-
 	}
 }
 
