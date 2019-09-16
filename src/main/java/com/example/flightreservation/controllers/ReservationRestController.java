@@ -1,6 +1,7 @@
 package com.example.flightreservation.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.example.flightreservation.entities.Reservation;
 import com.example.flightreservation.repos.ReservationRepository;
 
 @RestController
+@CrossOrigin
 public class ReservationRestController {
 
 	@Autowired
@@ -31,4 +33,5 @@ public class ReservationRestController {
 		
 		return reservationRepository.save(reservation);
 	}
+	
 }

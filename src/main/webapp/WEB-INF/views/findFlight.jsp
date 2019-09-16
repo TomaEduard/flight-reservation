@@ -20,8 +20,6 @@
 			<input type="submit" value="search" />
 		
 		</form>
-		
-	
 
 </body>
 
