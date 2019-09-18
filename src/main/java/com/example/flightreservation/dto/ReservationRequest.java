@@ -87,10 +87,15 @@ public class ReservationRequest {
 
 	@Override
 	public String toString() {
-		return "ReservationRequest [flightId=" + flightId + ", passengerFirstName=" + passengerFirstName
-				+ ", passengerLastName=" + passengerLastName + ", passengerEmail=" + passengerEmail
-				+ ", passengerPhone=" + passengerPhone + ", nameOnTheCard=" + nameOnTheCard + ", cardNumber="
-				+ cardNumber + ", expirationDate=" + expirationDate + ", securityCode=" + securityCode + "]";
+		return "ReservationRequest [flightId=" + flightId + 
+				", passengerFirstName=" + passengerFirstName + 
+				", passengerLastName=" + passengerLastName + 
+				", passengerEmail=" + passengerEmail
+				+ ", passengerPhone=" + passengerPhone + 
+				", nameOnTheCard=" + nameOnTheCard + 
+				", cardNumber=" + cardNumber + 
+				", expirationDate=" + expirationDate + 
+				", securityCode=" + securityCode + "]";
 	}
 
 }
