@@ -16,15 +16,16 @@ import com.example.flightreservation.repos.UserRepository;
 @Controller
 public class UserController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-
 	@Autowired
 	UserRepository userRepository;
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
 	@RequestMapping("/showReg")
 	public String showRegistrationPage() {
 
 		LOGGER.info(">>> inside showRegistrationPage()");
+		
 		return "login/registerUser";
 	}
 
