@@ -3,6 +3,7 @@ package com.example.flightreservation.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.flightreservation.entities.User;
 import com.example.flightreservation.repos.UserRepository;
+import com.example.flightreservation.services.SecurityService;
 
 @Controller
 public class UserController {
@@ -20,7 +22,13 @@ public class UserController {
 	UserRepository userRepository;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
+	@Autowired
+	private SecurityService securityService;
+	
 	@RequestMapping("/showReg")
 	public String showRegistrationPage() {
 
@@ -33,6 +41,7 @@ public class UserController {
 	public String register(@ModelAttribute("user") User user) {
 
 		LOGGER.info(">>> inside register()" + user);
+		user.setPassword(encoder.encode(user.getPassword()));
 		userRepository.save(user);
 
 		return "login/login";
@@ -43,17 +52,15 @@ public class UserController {
 
 		LOGGER.info(">>> inside loginFromRegisterUser() and the email is: " + email);
 
-		User user = userRepository.findByEmail(email);
+//		User user = userRepository.findByEmail(email);
+		boolean loginResponse = securityService.login(email, password);
 
-		
-		if (user != null && user.getPassword().equals(password)) {
+//		if (user != null && user.getPassword().equals(password)) {
+		if (loginResponse) {
 			return "findFlight";
 
 		} else {
-			modelMap.addAttribute("msg",
-					"Invalid User Name and Password. Please try again." + " FirstName:" + user.getFirstName()
-							+ " LastName:" + user.getLastName() + " Email:" + user.getEmail() + " Password:"
-							+ user.getPassword());
+			modelMap.addAttribute("msg", "Invalid User Name and Password. Please try again.");
 		}
 
 		return "login/login";

@@ -17,7 +17,7 @@
 			<br>
 			Last Name:  <input type="text" name="lastName"/>
 			<br>
-			User Name: <input type="text" name="email"/>
+			Email: <input type="text" name="email"/>
 			<br>
 			Password: <input type="password" name="password"/>
 			<br>
